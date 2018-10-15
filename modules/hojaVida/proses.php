@@ -28,7 +28,13 @@ else {
 
             $created_user = $_SESSION['numeroDocumento'];
 
-  
+            $query = mysqli_query($mysqli, "SELECT NroPotreroHV FROM hojasvida WHERE NroPotreroHV=$nroPotreroHV")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['NroPotreroHV'] == $nroPotreroHV){
+				header("location: ../../main.php?module=hojaVida&alert=4");
+            }else{   
             $query = mysqli_query($mysqli, "INSERT INTO hojasvida(NroPotreroHV,LoteHV,AreaHV,FechEntradaGanadoHV,FechSalidaGanadoHV,NroAnimHV,DiasOcupPotreroHV,DiasDesocupPotreroHV,FechAbonoHV,ProdAbonoHV,CantAbonoHV,TiempoCarenAbonoHV) 
                                             VALUES('$nroPotreroHV','$loteHV','$areaHV','$fechEntradaGanadoHV','$fechSalidaGanadoHV','$nroAnimHV','$diasOcupPotreroHV','$diasDesocupPotreroHV','$fechAbonoHV','$prodAbonoHV','$cantAbonoHV','$tiempoCarenAbonoHV')")
                                             or die('error '.mysqli_error($mysqli));    
@@ -38,6 +44,7 @@ else {
          
                 header("location: ../../main.php?module=hojaVida&alert=1");
             }   
+        }
         }   
     }
     

@@ -23,8 +23,7 @@ else {
 			$observParto = mysqli_real_escape_string($mysqli, trim($_POST['observParto']));
 
             $created_user = $_SESSION['numeroDocumeno'];
-
-  
+            
             $query = mysqli_query($mysqli, "INSERT INTO partos(IdParto,FechParto,VacaParto,ToroParto,AbortoParto,NombreCriaParto,SexoCriaParto,ObservParto) 
                                             VALUES('$idParto','$fechParto','$vacaParto','$toroParto','$abortoParto','$nombreCriaParto','$sexoCriaParto','$observParto')")
                                             or die('error '.mysqli_error($mysqli));    
@@ -33,7 +32,7 @@ else {
             if ($query) {
          
                 header("location: ../../main.php?module=parto&alert=1");
-            }   
+            } 
         }   
     }
     

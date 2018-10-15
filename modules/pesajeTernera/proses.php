@@ -22,9 +22,8 @@ else {
 			$cantMedPTernera = mysqli_real_escape_string($mysqli, trim($_POST['cantMedPTernera']));
 			$observPTernera = mysqli_real_escape_string($mysqli, trim($_POST['observPTernera']));
 
-            $created_user = $_SESSION['numeroDocumento'];
+            $created_user = $_SESSION['numeroDocumento']; 
 
-  
             $query = mysqli_query($mysqli, "INSERT INTO pesajesterneras(IdPTernera,FechPTernera,AnimPTernera,PesoPTernera,AlzadaPTernera,MedPTernera,CantMedPTernera,ObservPTernera) 
                                             VALUES('$idPTernera','$fechPTernera','$animPTernera','$pesoPTernera','$alzadaPTernera','$medPTernera','$cantMedPTernera','$observPTernera')")
                                             or die('error '.mysqli_error($mysqli));    
@@ -33,8 +32,7 @@ else {
             if ($query) {
          
                 header("location: ../../main.php?module=pesajeTernera&alert=1");
-            }   
-        }   
+            } 
     }
     
     elseif ($_GET['act']=='update') {

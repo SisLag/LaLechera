@@ -19,7 +19,19 @@ if (empty($_SESSION['usuarioEncargado']) && empty($_SESSION['claveEncargado'])) 
 
             $created_user = $_SESSION['numeroDocumento'];
 
+            $query = mysqli_query($mysqli, "SELECT IdRegIcaMedicamento FROM registrosmedicamentos")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
 
+			if($data['IdRegIcaMedicamento'] == $idRegIcaMedicamento){
+				header("location: ../../main.php?module=medicamento&alert=5");
+            }
+            $query = mysqli_query($mysqli, "SELECT NombreMedicamento FROM registrosmedicamentos where NombreMedicamento = '$nombreMedicamento'")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+            if($data['NombreMedicamento'] == $nombreMedicamento){
+				header("location: ../../main.php?module=medicamento&alert=5");
+            }else{ 
             $query = mysqli_query($mysqli, "INSERT INTO registrosmedicamentos(IdRegIcaMedicamento,NombreMedicamento,TipoMedicamento,unidadMedicamento,descMedicamento) 
                                             VALUES('$idRegIcaMedicamento','$nombreMedicamento','$tipoMedicamento','$unidadMedicamento','$descMedicamento')")
                 or die('error ' . mysqli_error($mysqli));
@@ -29,6 +41,7 @@ if (empty($_SESSION['usuarioEncargado']) && empty($_SESSION['claveEncargado'])) 
 
                 header("location: ../../main.php?module=medicamento&alert=1");
             }
+        }
         }
     } elseif ($_GET['act'] == 'update') {
         if (isset($_POST['Guardar'])) {

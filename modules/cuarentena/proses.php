@@ -24,7 +24,13 @@ else {
             $prodDesinfecCuarentena = mysqli_real_escape_string($mysqli, trim($_POST['prodDesinfecCuarentena']));			
             $encargadoCuarenten = $_SESSION['numeroDocumento'];
 
-  
+            $query = mysqli_query($mysqli, "SELECT IdCuarentena FROM cuarentenas WHERE IdCuarentena=$idCuarentena")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['IdCuarentena'] == $idCuarentena){
+				header("location: ../../main.php?module=cuarentena&alert=4");
+            }else{              
             $query = mysqli_query($mysqli, "INSERT INTO cuarentenas(IdCuarentena,AnimCuarentena,FechIngresoCuarentena,FechSalidaCuarentena,NumAnimalCuarentena,MotivoIngresoCuarentena,DiagPresuntCuarentena,DesinfCuarentena,ProdDesinfecCuarentena,EncargadoCuarenten) 
                                             VALUES('$idCuarentena','$animCuarentena','$fechIngresoCuarentena','$fechSalidaCuarentena','$numAnimalCuarentena','$motivoIngresoCuarentena','$diagPresuntCuarentena','$desinfCuarentena','$prodDesinfecCuarentena','$encargadoCuarenten')")
                                             or die('error '.mysqli_error($mysqli));    
@@ -33,7 +39,8 @@ else {
             if ($query) {
          
                 header("location: ../../main.php?module=cuarentena&alert=1");
-            }   
+            }  
+        } 
         }   
     }
     

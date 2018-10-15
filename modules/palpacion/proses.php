@@ -28,7 +28,6 @@ else {
             $observPalpacion = mysqli_real_escape_string($mysqli, trim($_POST['observPalpacion']));
 
             $created_user = $_SESSION['numeroDocumento'];
-
   
             $query = mysqli_query($mysqli, "INSERT INTO registrospalpaciones(IdPalpacion,FechPalpacion,VacaPalpacion,FechUltimPartoPalpacion,DiasLechePalpacion,FechUltimServicPalpacion,DiasServidaPalpacion,FechUltimPalpacion,HallazgosPalpacion,EstadoPalpacion,EstrucOvaricasPalpacion,CCRechequeoPalpacion,ObservPalpacion) 
                                             VALUES('$idPalpacion','$fechPalpacion','$vacaPalpacion','$fechUltimPartoPalpacion','$diasLechePalpacion','$fechUltimServicPalpacion','$diasServidaPalpacion','$fechUltimPalpacion','$hallazgosPalpacion','$estadoPalpacion','$estrucOvaricasPalpacion','$cCRechequeoPalpacion','$observPalpacion')")

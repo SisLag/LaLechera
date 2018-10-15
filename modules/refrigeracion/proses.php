@@ -22,7 +22,13 @@ else {
 
             $created_user = $_SESSION['numeroDocumento'];
 
-  
+            $query = mysqli_query($mysqli, "SELECT IdRefrigeracion,FROM refrigeraciones where IdRefrigeracion = $idRefrigeracion")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['IdRefrigeracion']==$idRefrigeracion){
+				header("location: ../../main.php?module=refrigeracion&alert=4");
+            }else{  
             $query = mysqli_query($mysqli, "INSERT INTO refrigeraciones(IdRefrigeracion,FechRefrigeracion,HoraAmRefrigeracion,TempAmRefrigeracion,HoraPmRefrigeracion,TempPmRefrigeracion,EncargadoRefrigeracion) 
                                             VALUES('$idRefrigeracion','$fechRefrigeracion','$horaAmRefrigeracion','$tempAmRefrigeracion','$horaPmRefrigeracion','$tempPmRefrigeracion','$created_user')")
                                             or die('error '.mysqli_error($mysqli));    
@@ -32,6 +38,7 @@ else {
          
                 header("location: ../../main.php?module=refrigeracion&alert=1");
             }   
+        }
         }   
     }
     

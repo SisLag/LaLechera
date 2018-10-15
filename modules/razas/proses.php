@@ -17,8 +17,7 @@ else {
             $nombreRaza = mysqli_real_escape_string($mysqli, trim($_POST['nombreRaza']));
             $descripcionRaza = mysqli_real_escape_string($mysqli, trim($_POST['descripcionRaza']));
 
-            $created_user = $_SESSION['id_user'];
-
+            $created_user = $_SESSION['numeroDocumento'];
   
             $query = mysqli_query($mysqli, "INSERT INTO razas(IdRaza,NombreRaza,DescripcionRaza,created_user,updated_user) 
                                             VALUES('$idRaza','$nombreRaza','$descripcionRaza','$created_user','$created_user')")
@@ -28,7 +27,7 @@ else {
             if ($query) {
          
                 header("location: ../../main.php?module=razas&alert=1");
-            }   
+            }  
         }   
     }
     

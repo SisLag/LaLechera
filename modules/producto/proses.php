@@ -23,7 +23,19 @@ else {
 
             $created_user = $_SESSION['numeroDocumento'];
 
-  
+            $query = mysqli_query($mysqli, "SELECT RegIcaProd FROM registrosproductos WHERE RegIcaProd='$regIcaProd'")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['RegIcaProd'] == $regIcaProd){
+                header("location: ../../main.php?module=producto&alert=5");                   
+            }
+            $query = mysqli_query($mysqli, "SELECT NombreProd FROM registrosproductos WHERE NombreProd='$nombreProd'")
+                or die('error: ' . mysqli_error($mysqli));
+              $data = mysqli_fetch_assoc($query); 
+            if($data['NombreProd'] == $nombreProd){
+				header("location: ../../main.php?module=producto&alert=5");
+			}else{  
             $query = mysqli_query($mysqli, "INSERT INTO registrosproductos(RegIcaProd,NombreProd,TipoProd,UnidadProd,NroLoteProd,EncargadoProd,DescProd) 
                                             VALUES('$regIcaProd','$nombreProd','$tipoProd','$unidadProd','$nroLoteProd','$encargadoProd','$descProd')")
                                             or die('error '.mysqli_error($mysqli));    
@@ -32,7 +44,8 @@ else {
             if ($query) {
          
                 header("location: ../../main.php?module=producto&alert=1");
-            }   
+            } 
+        }  
         }   
     }
     

@@ -25,6 +25,13 @@ else {
 
             $created_user = $_SESSION['numeroDocumento'];
 
+            $query = mysqli_query($mysqli, "SELECT IdProdVaca FROM produccionesvacas WHERE IdProdVaca=$idProdVaca")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['IdPDiaria'] == $idPDiaria){
+				header("location: ../../main.php?module=produccionVaca&alert=4");
+			}else{
   
             $query = mysqli_query($mysqli, "INSERT INTO produccionesvacas(IdProdVaca,VacaProd,FechProdVaca,LtsAmProdVaca,LtspmProdVaca,TotalLtsProdVaca,ConcentrProdVaca,CondiccCorpVacaProdVaca,ObservProdVaca) 
                                             VALUES('$IdProdVaca','$vacaProd','$fechProdVaca','$ltsAmProdVaca','$ltspmProdVaca','$totalLtsProdVaca','$concentrProdVaca','$condiccCorpVacaProdVaca','$observProdVaca')")

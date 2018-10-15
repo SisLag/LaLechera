@@ -23,16 +23,23 @@ else {
 
             $created_user = $_SESSION['numeroDocumento'];
 
-  
-            $query = mysqli_query($mysqli, "INSERT INTO movimientosganados(IdMovGanado,FechMovGanado,AnimMovGanado,TransMonvGanado,ValorMGanado,ObservMovGanado,GuiaMovilizMovGanado) 
-                                            VALUES('$idMovGanado','$fechMovGanado','$animMovGanado','$transMonvGanado','$valorMGanado','$observMovGanado','$guiaMovilizMovGanado')")
+            $query = mysqli_query($mysqli, "SELECT IdMovGanado FROM movimientosganados WHERE IdMovGanado = $idMovGanado")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['IdMovGanado'] == $idMovGanado){
+				header("location: ../../main.php?module=movimientoGanado&alert=4");
+            }else{
+                  
+            $query = mysqli_query($mysqli, "INSERT INTO movimientosganados(IdMovGanado,FechMovGanado,AnimMovGanado,TransMonvGanado,ValorMGanado,ObservMovGanado,GuiaMovilizMovGanado) VALUES('$idMovGanado','$fechMovGanado','$animMovGanado','$transMonvGanado','$valorMGanado','$observMovGanado','$guiaMovilizMovGanado')")
                                             or die('error '.mysqli_error($mysqli));    
 
         
             if ($query) {
          
                 header("location: ../../main.php?module=movimientoGanado&alert=1");
-            }   
+            } 
+        }
         }   
     }
     

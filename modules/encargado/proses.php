@@ -20,8 +20,22 @@ else {
 			$usuarioEncargado = mysqli_real_escape_string($mysqli, trim($_POST['usuarioEncargado']));
 			$claveEncargado  = md5(mysqli_real_escape_string($mysqli, trim($_POST['claveEncargado'])));
 			$perfilEncargado = mysqli_real_escape_string($mysqli, trim($_POST['perfilEncargado']));
+			
+			$query = mysqli_query($mysqli, "SELECT NumeroDocumento FROM encargados WHERE NumeroDocumento=$numeroDocumento")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
 
+			if($data['NumeroDocumento'] == $numeroDocumento){
+				header("location: ../../main.php?module=encargado&alert=12");
+			}
 
+			$query = mysqli_query($mysqli, "SELECT UsuarioEncargado FROM encargados WHERE UsuarioEncargado='$usuarioEncargado'")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+			if($data['UsuarioEncargado'] == $usuarioEncargado){
+				header("location: ../../main.php?module=encargado&alert=12");
+			}
+			else{
             $query = mysqli_query($mysqli, "INSERT INTO encargados(NumeroDocumento,NombreEncargado,Apellido1Encargado,Apellido2Encargado,UsuarioEncargado,ClaveEncargado,PerfilEncargado)
                                             VALUES('$numeroDocumento','$nombreEncargado','$apellido1Encargado','$apellido2Encargado','$usuarioEncargado','$claveEncargado','$perfilEncargado')")
                                             or die('error: '.mysqli_error($mysqli));    
@@ -29,7 +43,8 @@ else {
           
             if ($query) {
                 header("location: ../../main.php?module=encargado&alert=1");
-            }
+			}
+		}
 		}	
 	}
 	
@@ -223,6 +238,13 @@ else {
 
 			  $encargadoProd = mysqli_fetch_assoc($query);   
 			/////////////////////////////////////////////////////////////
+			//Usuario-Alimento
+			/////////////////////////////////////////////////////////////
+			$query = mysqli_query($mysqli, "SELECT en.NumeroDocumento,ra.EncargadoAlimento FROM encargados en INNER JOIN registrosalimentos ra ON en.NumeroDocumento=ra.EncargadoAlimento where ra.EncargadoAlimento = $numeroDocumento")
+                                            or die('error '.mysqli_error($mysqli));
+
+			  $encargadoAlimento = mysqli_fetch_assoc($query);   
+			/////////////////////////////////////////////////////////////
 			//Usuario-Servicio y Calor
 			/////////////////////////////////////////////////////////////
 			$query = mysqli_query($mysqli, "SELECT en.NumeroDocumento,sc.InseminSCalores FROM encargados en INNER JOIN servicioscalores sc ON en.NumeroDocumento=sc.InseminSCalores where sc.InseminSCalores = $numeroDocumento")
@@ -260,6 +282,8 @@ else {
 				header("location: ../../main.php?module=encargado&alert=11");
 			}
 			elseif( $encargadoRefrigeracion['EncargadoRefrigeracion']==$numeroDocumento){
+				header("location: ../../main.php?module=encargado&alert=11");
+			}elseif( $encargadoAlimento['EncargadoAlimento']==$numeroDocumento){
 				header("location: ../../main.php?module=encargado&alert=11");
 			}    
             else {

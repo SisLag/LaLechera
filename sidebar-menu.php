@@ -98,9 +98,9 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
 				<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Gestionar Leche</span> <i class="fa fa-angle-double-down pull-right"></i>
           	</a>
-      		<ul class="treeview-menu">
-        		<li class="active"><a href="?module=produccionDiaria"><i class="fa fa-circle-o"></i>Producción Diaria de Leche</a></li>
+      		<ul class="treeview-menu">        		
         		<li><a href="?module=produccionVaca"><i class="fa fa-circle-o"></i>Producción de Leche por Vaca</a></li>
+				<li class="active"><a href="?module=produccionDiaria"><i class="fa fa-circle-o"></i>Producción Diaria de Leche</a></li>
 				<li class="active"><a href="?module=refrigeracion"><i class="fa fa-circle-o"></i>Refrigeración</a></li>
       		</ul>
 			</ul>
@@ -146,9 +146,9 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
 				<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Gestionar Leche</span> <i class="fa fa-angle-double-down pull-right"></i>
           	</a>
-      		<ul class="treeview-menu">
-        		<li class="active"><a href="?module=produccionDiaria"><i class="fa fa-circle-o"></i>Producción Diaria de Leche</a></li>
+      		<ul class="treeview-menu">        		
         		<li><a href="?module=produccionVaca"><i class="fa fa-circle-o"></i>Producción de Leche por Vaca</a></li>
+				<li class="active"><a href="?module=produccionDiaria"><i class="fa fa-circle-o"></i>Producción Diaria de Leche</a></li>
 				<li class="active"><a href="?module=refrigeracion"><i class="fa fa-circle-o"></i>Refrigeración</a></li>
       		</ul>
 			</ul>
@@ -194,9 +194,9 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
 				<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Gestionar Leche</span> <i class="fa fa-angle-double-down pull-right"></i>
           	</a>
-      		<ul class="treeview-menu">
-        		<li class="active"><a href="?module=produccionDiaria"><i class="fa fa-circle-o"></i>Producción Diaria de Leche</a></li>
+      		<ul class="treeview-menu">        		
         		<li><a href="?module=produccionVaca"><i class="fa fa-circle-o"></i>Producción de Leche por Vaca</a></li>
+				<li class="active"><a href="?module=produccionDiaria"><i class="fa fa-circle-o"></i>Producción Diaria de Leche</a></li>
 				<li class="active"><a href="?module=refrigeracion"><i class="fa fa-circle-o"></i>Refrigeración</a></li>
       		</ul>
 			</ul>

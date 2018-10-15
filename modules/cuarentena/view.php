@@ -44,6 +44,13 @@
             Dato Eliminado Correctamente
             </div>";
     }
+    elseif ($_GET['alert'] == 4) {
+      echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> Exito!</h4>
+              El registro ya exite
+            </div>";
+    }
     ?>
         <div class="box-body2">
 		<a class="btn btn-success glyphicon pull-left" href="?module=printCuarentena" title="Imprimir" data-toggle="tooltip">

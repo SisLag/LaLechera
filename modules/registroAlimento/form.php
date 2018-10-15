@@ -21,31 +21,11 @@ if ($_GET['form'] == 'add') { ?>
           <!-- form start -->
           <form role="form" class="form-horizontal" action="modules/registroAlimento/proses.php?act=insert" method="POST">
             <div class="box-body">
-              <?php 
-
-              $query_id = mysqli_query($mysqli, "SELECT RIGHT(RegIcaAlimento,2) as RegIcaAlimento FROM registrosalimentos
-                                                ORDER BY RegIcaAlimento DESC LIMIT 1")
-                or die('error ' . mysqli_error($mysqli));
-
-              $count = mysqli_num_rows($query_id);
-
-              if ($count <> 0) {
-
-                $data_id = mysqli_fetch_assoc($query_id);
-                $regIcaAlimento = $data_id['RegIcaAlimento'] + 1;
-              } else {
-                $regIcaAlimento = 1;
-              }
-
-
-              $buat_id = str_pad($regIcaAlimento, 2, "0", STR_PAD_LEFT);
-              $regIcaAlimento = "AL$buat_id";
-              ?>
-
+              
               <div class="form-group">
                 <label class="col-sm-2 control-label">* Registro Ica</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" name="regIcaAlimento" value="<?php echo $regIcaAlimento; ?>" readonly required>
+                  <input type="text" class="form-control" name="regIcaAlimento" required>
                 </div>
               </div>
 
@@ -108,7 +88,7 @@ if ($_GET['form'] == 'add') { ?>
 			  <div class="form-group">
                 <label class="col-sm-2 control-label">Descripción</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" name="descAlimento" autocomplete="off" required>
+                  <input type="text" class="form-control" name="descAlimento" autocomplete="off">
                 </div>
               </div>			  
               
@@ -156,7 +136,7 @@ if ($_GET['form'] == 'add') { ?>
       <div class="col-md-12">
         <div class="box box-success">
           <!-- form start -->
-          <form role="form" class="form-horizontal" action="modules/refrigeracion/proses.php?act=update" method="POST">
+          <form role="form" class="form-horizontal" action="modules/registroAlimento/proses.php?act=update" method="POST">
             <div class="box-body">
               
               <div class="form-group">
@@ -176,7 +156,7 @@ if ($_GET['form'] == 'add') { ?>
 			  <div class="form-group">
                 <label class="col-sm-2 control-label">Descripción</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" name="descAlimento" autocomplete="off" value="<?php echo $data['DescAlimento']; ?>" required>
+                  <input type="text" class="form-control" name="descAlimento" autocomplete="off" value="<?php echo $data['DescAlimento']; ?>">
                 </div>
               </div>
 

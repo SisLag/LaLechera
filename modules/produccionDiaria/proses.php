@@ -28,6 +28,13 @@ else {
 
             $created_user = $_SESSION['numeroDocumento'];
 
+            $query = mysqli_query($mysqli, "SELECT IdPDiaria FROM produccionesdiarias WHERE IdPDiaria=$idPDiaria")
+			or die('error: ' . mysqli_error($mysqli));
+		  $data = mysqli_fetch_assoc($query);
+
+			if($data['IdPDiaria'] == $idPDiaria){
+				header("location: ../../main.php?module=produccionDiaria&alert=4");
+			}else{
   
             $query = mysqli_query($mysqli, "INSERT INTO produccionesdiarias(IdPDiaria,FechProdDiaria,PlantaProdDiaria,CriaProdDiaria,OtrosProdDiaria,TotalDiaProdDiaria,NroVacasOrdenoProdDiaria,PromLtsProdDiaria,TotalConcentAmProdDiaria,TotalConcentPmProdDiaria,PromConcentProdDiaria,RelacLecheConcentProdDiaria) 
                                             VALUES('$idPDiaria','$fechProdDiaria','$plantaProdDiaria','$criaProdDiaria','$otrosProdDiaria','$totalDiaProdDiaria','$nroVacasOrdenoProdDiaria','$promLtsProdDiaria','$totalConcentAmProdDiaria','$totalConcentPmProdDiaria','$promConcentProdDiaria','$relacLecheConcentProdDiaria')")
@@ -37,7 +44,8 @@ else {
             if ($query) {
          
                 header("location: ../../main.php?module=produccionDiaria&alert=1");
-            }   
+            }  
+        } 
         }   
     }
     

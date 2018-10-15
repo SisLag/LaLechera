@@ -39,7 +39,7 @@ if ($_GET['form'] == 'add') { ?>
 
 
               $buat_id = str_pad($idRaza, 2, "0", STR_PAD_LEFT);
-              $idRaza = "RA$buat_id";
+              $idRaza = "$buat_id";
               ?>
 
               <div class="form-group">
