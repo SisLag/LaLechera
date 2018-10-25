@@ -18,7 +18,7 @@
       
       <div class="box box-success">
         <!-- form start -->
-        <form role="form" class="form-horizontal" method="GET" action="modules/imprimibles/printEncargado.php" target="_blank">
+        <form role="form" class="form-horizontal" method="GET" action="modules/imprimibles/printRegistroAlimento.php" target="_blank">
           <div class="box-body2">
 
             <div class="form-group">
