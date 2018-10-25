@@ -1,5 +1,3 @@
-
-
 <section class="content-header">
   <h1>
     <i class="fa fa-user icon-title"></i> Gestión de Encargado
@@ -7,7 +5,6 @@
       <i class="fa fa-plus"></i> Agregar
     </a>
   </h1>
-
 </section>
 
 <!-- Main content -->
@@ -116,8 +113,30 @@
     }
     ?>
 	
+	<script>
+		window.onload=function()
+		{
+			var elemento=document.getElementById("canvas");
+			elemento.onmouseover = function(e) {
+ 
+				// El contenido de esta funcion se ejecutara cuanso el mouse
+				// pase por encima del elemento
+ 
+				document.getElementById("Eliminar").style.display = 'block';
+			};
+			elemento.onmouseout = function(e) {
+ 
+				// El contenido de esta funcion se ejecutara cuanso el mouse
+				// salga del elemento
+ 
+				document.getElementById("Eliminar").style.display = 'block';
+			};
+		}
+		</script>
+	
       <div class="box box-success">
         <div class="box-body2">
+		<div class="canvas">
 		<a class="btn btn-success glyphicon pull-left" href="?module=printEncargado" title="Imprimir" data-toggle="tooltip">
       <i class="glyphicon fa fa-print"></i>
     </a>
@@ -191,17 +210,13 @@
                             </a>
 							
 							
-                          </div>
-						  
-						  <div>";
+                          </div>";
             ?>
-                          <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/encargado/proses.php?act=delete&id=<?php echo $data['NumeroDocumento'];?>" onclick="return confirm('estas seguro de eliminar <?php echo $data[ 'NombreEncargado']; ?>?');">
+                          <a data-toggle="tooltip" data-placement="top" id='oculto' title="Eliminar" class="btn btn-danger btn-sm" href="modules/encargado/proses.php?act=delete&id=<?php echo $data['NumeroDocumento'];?>" onclick="return confirm('estas seguro de eliminar <?php echo $data[ 'NombreEncargado']; ?>?');">
                               <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
-                          </a>
-						  
+                          </a>					  
             <?php
-              echo "    </div>
-						  
+              echo "    					  
 						  
                       </td>					  
 					  
@@ -215,8 +230,10 @@
 			
             </tbody>
           </table>
+		  </div><!-- /.canvas -->
         </div><!-- /.box-body -->
       </div><!-- /.box -->
+	   
     </div><!--/.col -->
   </div>   <!-- /.row -->
 </section><!-- /.content

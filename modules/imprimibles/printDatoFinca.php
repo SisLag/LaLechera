@@ -60,14 +60,18 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
-                        <th height="20" align="center" valign="middle"><small>NO.</small></th>
-                        <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
-                        <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
-                        <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
-                        <th height="20" align="center" valign="middle"><small>TIPO </small></th>
-						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
-                        <th height="20" align="center" valign="middle"><small>UNIDAD</small></th>
+                        <th height="20" align="center" valign="middle"><small>NombreFinca</small></th>
+                        <th height="20" align="center" valign="middle"><small>MunicipioFinca</small></th>
+                        <th height="20" align="center" valign="middle"><small>VeredaFinca</small></th>
+                        <th height="20" align="center" valign="middle"><small>BarrioFinca </small></th>
+                        <th height="20" align="center" valign="middle"><small>NombrePropietFinca</small></th>
+                        <th height="20" align="center" valign="middle"><small>TelFinca1 </small></th>
+						<th height="20" align="center" valign="middle"><small>NombreAdminFinca. </small></th>
+                        <th height="20" align="center" valign="middle"><small>TelFinca12</small></th>
+                        <th height="20" align="center" valign="middle"><small>AreaTotalFinca</small></th>
+                        <th height="20" align="center" valign="middle"><small>AreaPastosFinca </small></th>
+						<th height="20" align="center" valign="middle"><small>AreaLecheriaFinca. </small></th>
+                        <th height="20" align="center" valign="middle"><small>AreaLevanteFinca</small></th>
                     </tr>
                 </thead>
                 <tbody>

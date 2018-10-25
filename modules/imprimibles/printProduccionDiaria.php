@@ -60,14 +60,18 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
-                        <th height="20" align="center" valign="middle"><small>NO.</small></th>
-                        <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
-                        <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
-                        <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
-                        <th height="20" align="center" valign="middle"><small>TIPO </small></th>
-						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
-                        <th height="20" align="center" valign="middle"><small>UNIDAD</small></th>
+                        <th height="20" align="center" valign="middle"><small>IdPDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>FechProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>PlantaProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>CriaProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>OtrosProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>TotalDiaProdDiaria</small></th>
+						<th height="20" align="center" valign="middle"><small>NroVacasOrdenoProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>PromLtsProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>TotalConcentAmProdDiaria</small></th>
+						<th height="20" align="center" valign="middle"><small>TotalConcentPmProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>PromConcentProdDiaria</small></th>
+                        <th height="20" align="center" valign="middle"><small>RelacLecheConcentProdDiaria</small></th>
                     </tr>
                 </thead>
                 <tbody>

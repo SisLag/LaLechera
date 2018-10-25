@@ -60,14 +60,14 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
-                        <th height="20" align="center" valign="middle"><small>NO.</small></th>
-                        <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
-                        <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
-                        <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
-                        <th height="20" align="center" valign="middle"><small>TIPO </small></th>
-						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
-                        <th height="20" align="center" valign="middle"><small>UNIDAD</small></th>
+                        <th height="20" align="center" valign="middle"><small>IdPTernera</small></th>
+                        <th height="20" align="center" valign="middle"><small>FechPTernera</small></th>
+                        <th height="20" align="center" valign="middle"><small>AnimPTernera</small></th>
+                        <th height="20" align="center" valign="middle"><small>PesoPTernera</small></th>
+                        <th height="20" align="center" valign="middle"><small>AlzadaPTernera</small></th>
+                        <th height="20" align="center" valign="middle"><small>MedPTernera</small></th>
+						<th height="20" align="center" valign="middle"><small>CantMedPTernera</small></th>
+                        <th height="20" align="center" valign="middle"><small>ObservPTernera</small></th>
                     </tr>
                 </thead>
                 <tbody>

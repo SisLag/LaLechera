@@ -1,24 +1,42 @@
 <?php 
 //en esta sesion se agregan los permisos de usuario.
-if ($_SESSION['perfilEncargado']=='1') { ?>
+if ($_SESSION['perfilEncargado'] == '1') { ?>
 
     <ul class="sidebar-menu">
         <li class="header">MENU</li>
+		
+<script type="text/javascript">
+		function visible_div(){
+   var elemento = document.getElementById("oculto");
+   elemento.style.display = 'none';
+}
 
-	<?php 
 
-	if ($_GET["module"]=="start") { 
-		$active_home="active";
-	} else {
-		$active_home="";
-	}
-	?>
-		<li class="<?php echo $active_home;?>">
+var obj=null;
+function visible_div(id)
+{
+var targetId, srcElement, targetElement;
+var targetElement = document.getElementById(id);
+if (obj!=null) 
+  obj.style.display='none';
+obj=targetElement;
+targetElement.style.display = "";
+}
+</script>
+
+<?php 
+if ($_GET["module"] == "start") {
+	$active_home = "active";
+} else {
+	$active_home = "";
+}
+?>
+		<li class="<?php echo $active_home; ?>">
 			<a href="?module=start"><i class="fa fa-home"></i> Inicio </a>
 	  	</li>
 	<?php
-	
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -31,9 +49,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>			
     	</li>
     <?php
-	}
 
-	elseif ($_GET["module"]=="stock_report") { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -45,9 +62,21 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	else { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
+		<li class="active treeview">
+          	<a href="javascript:void(0);">
+            	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
+          	</a>
+      		<ul class="treeview-menu">
+        		<li class="active"><a href="?module=encargado"><i class="fa fa-circle-o"></i>Gestionar Usuarios</a></li>
+				<li class="active"><a href="?module=password"><i class="fa fa-circle-o"></i>Cambiar Contraseña</a></li>
+        		<li><a href="?module=datoFinca"><i class="fa fa-circle-o"></i>Datos Finca</a></li>
+      		</ul>
+    	</li>
+    <?php
+
+		} else { ?>
 		<li class="treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -59,10 +88,11 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
-	
-	
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+		}
+
+
+		if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -107,9 +137,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>			
     	</li>
     <?php
-	}
 
-	elseif ($_GET["module"]=="stock_report") { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -155,9 +184,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	else { ?>
+		} else { ?>
 		<li class="treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -203,10 +231,11 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
-	
-	
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+		}
+
+
+		if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Movimientos</span> <i class="fa fa-angle-left pull-right"></i>
@@ -221,9 +250,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>			
     	</li>
     <?php
-	}
-	
-	elseif ($_GET["module"]=="stock_report") { ?>
+
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Movimientos</span> <i class="fa fa-angle-left pull-right"></i>
@@ -238,9 +266,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>	
     	</li>
     <?php
-	}
 
-	else { ?>
+		} else { ?>
 		<li class="treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Movimientos</span> <i class="fa fa-angle-left pull-right"></i>
@@ -255,9 +282,10 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>	
     	</li>
     <?php
-	}
-  
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+		}
+
+		if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -268,9 +296,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	elseif ($_GET["module"]=="stock_report") { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -281,9 +308,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	else { ?>
+		} else { ?>
 		<li class="treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i>
@@ -295,9 +321,10 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
-	
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+		}
+
+		if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i>
@@ -309,9 +336,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	elseif ($_GET["module"]=="stock_report") { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i>
@@ -323,9 +349,8 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	else { ?>
+		} else { ?>
 		<li class="treeview">
 			<a href="?module=reportes">
 				<i class="fa fa-file-text"></i> Reportes
@@ -333,31 +358,31 @@ if ($_SESSION['perfilEncargado']=='1') { ?>
     	</li>
     
 	<?php
-	}
-	?>
+
+}
+?>
 	</ul>
 <?php
-}
 
-elseif ($_SESSION['perfilEncargado']=='2') { ?>
+} elseif ($_SESSION['perfilEncargado'] == '2') { ?>
 
     <ul class="sidebar-menu">
         <li class="header">MENU</li>
 
 	<?php 
 
-	if ($_GET["module"]=="start") { 
-		$active_home="active";
-	} else {
-		$active_home="";
-	}
-	?>
-		<li class="<?php echo $active_home;?>">
+if ($_GET["module"] == "start") {
+	$active_home = "active";
+} else {
+	$active_home = "";
+}
+?>
+		<li class="<?php echo $active_home; ?>">
 			<a href="?module=start"><i class="fa fa-home"></i> Inicio </a>
 	  	</li>
 	<?php
-	
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -369,9 +394,8 @@ elseif ($_SESSION['perfilEncargado']=='2') { ?>
       		</ul>			
     	</li>
     <?php
-	}
 
-	elseif ($_GET["module"]=="stock_report") { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -382,9 +406,8 @@ elseif ($_SESSION['perfilEncargado']=='2') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	else { ?>
+		} else { ?>
 		<li class="treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Administración</span> <i class="fa fa-angle-left pull-right"></i>
@@ -395,10 +418,11 @@ elseif ($_SESSION['perfilEncargado']=='2') { ?>
       		</ul>
     	</li>
     <?php
-	}
-	
-	
-	if ($_GET["module"]=="stock_inventory") { ?>
+
+		}
+
+
+		if ($_GET["module"] == "stock_inventory") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -443,9 +467,8 @@ elseif ($_SESSION['perfilEncargado']=='2') { ?>
       		</ul>			
     	</li>
     <?php
-	}
 
-	elseif ($_GET["module"]=="stock_report") { ?>
+		} elseif ($_GET["module"] == "stock_report") { ?>
 		<li class="active treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -491,9 +514,8 @@ elseif ($_SESSION['perfilEncargado']=='2') { ?>
       		</ul>
     	</li>
     <?php
-	}
 
-	else { ?>
+		} else { ?>
 		<li class="treeview">
           	<a href="javascript:void(0);">
             	<i class="fa fa-file-text"></i> <span>Servicios</span> <i class="fa fa-angle-left pull-right"></i>
@@ -539,48 +561,52 @@ elseif ($_SESSION['perfilEncargado']=='2') { ?>
       		</ul>
     	</li>
     <?php
-	}	
-	  
-	
-	?>
+
+		}
+
+
+		?>
 	</ul>
 <?php
+
 }
-if ($_SESSION['perfilEncargado']=='3') { ?>
+if ($_SESSION['perfilEncargado'] == '3') { ?>
 
     <ul class="sidebar-menu">
         <li class="header">MENU</li>
 
 	<?php 
 
-  if ($_GET["module"]=="start") { ?>
+if ($_GET["module"] == "start") { ?>
     <li class="active">
       <a href="?module=start"><i class="fa fa-home"></i> Inicio </a>
       </li>
   <?php
-  }
 
-  else { ?>
+} else { ?>
     <li>
       <a href="?module=start"><i class="fa fa-home"></i> Inicio </a>
       </li>
   <?php
-  }
 
-  if ($_GET["module"]=="servicioCalor" || $_GET["module"]=="form_servicioCalor") { ?>
+}
+
+if ($_GET["module"] == "servicioCalor" || $_GET["module"] == "form_servicioCalor") { ?>
     <li class="active">
       <a href="?module=servicioCalor"><i class="fa fa-folder"></i> Datos de servicio Calor </a>
       </li>
   <?php
-  }
-  else { ?>
+
+} else { ?>
     <li>
       <a href="?module=servicioCalor"><i class="fa fa-folder"></i> Datos de servicio Calor </a>
       </li>
   <?php
-  }
-	?>
-	</ul>
-<?php
+
 }
 ?>
+	</ul>
+<?php
+
+}
+?>z

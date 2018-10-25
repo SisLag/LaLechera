@@ -60,14 +60,14 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
-                        <th height="20" align="center" valign="middle"><small>NO.</small></th>
-                        <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
-                        <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
-                        <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
-                        <th height="20" align="center" valign="middle"><small>TIPO </small></th>
-						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
-                        <th height="20" align="center" valign="middle"><small>UNIDAD</small></th>
+                        <th height="20" align="center" valign="middle"><small>RegIcaAlimento</small></th>
+                        <th height="20" align="center" valign="middle"><small>NombreAlimento</small></th>
+                        <th height="20" align="center" valign="middle"><small>TipoAlimento</small></th>
+                        <th height="20" align="center" valign="middle"><small>UnidadAlimento</small></th>
+                        <th height="20" align="center" valign="middle"><small>NroLoteAlimento</small></th>
+                        <th height="20" align="center" valign="middle"><small>stock</small></th>
+						<th height="20" align="center" valign="middle"><small>EncargadoAlimento</small></th>
+                        <th height="20" align="center" valign="middle"><small>DescAlimento</small></th>
                     </tr>
                 </thead>
                 <tbody>

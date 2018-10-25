@@ -1,5 +1,4 @@
 function validarUsuario(){
-	
   var ok = true;
   var msg = "";
   var alert = document.getElementById("alert");
@@ -11,7 +10,6 @@ var apellido2Encargado = document.getElementsByName("apellido2Encargado")[0].val
 var usuarioEncargado = document.getElementsByName("usuarioEncargado")[0].value;
 var claveEncargado = document.getElementsByName("claveEncargado")[0].value;
 var perfilEncargado = document.getElementsByName("perfilEncargado")[0].value;
-While(ok){
 if ((numeroDocumento == "")) {  //COMPRUEBA CAMPOS VACIOS
     msg += "- Los campos con * son requeridos";
 	
@@ -71,8 +69,7 @@ else if(!(usuarioEncargado.length >= 4 && usuarioEncargado.length <= 20)){
 	alert.insertAdjacentHTML("beforeend","<strong>Error!</strong> "+msg+"\n");
     return ok; 	
 }
-	
-}
+
 
 function validarAnimal(){
 	 var ok = true;
@@ -95,3 +92,4 @@ if(ok == false)
     alert.insertAdjacentHTML("beforeend","<strong>Well done!</strong> -"+msg+"\n");
   return ok;
 }
+

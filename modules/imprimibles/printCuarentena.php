@@ -23,10 +23,8 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad
-                                    FROM transaccion_medicamentos as a INNER JOIN medicamentos as b ON a.codigo=b.codigo
-                                    WHERE a.fecha BETWEEN '$tgl_awal' AND '$tgl_akhir'
-                                    ORDER BY a.codigo_transaccion ASC") 
+    $query = mysqli_query($mysqli, "SELECT cu.IdCuarentena,cu.FechSalidaCuarentena,cu.MotivoIngresoCuarentena,cu.DiagPresuntCuarentena,cu.DesinfCuarentena,cu.ProdDesinfecCuarentena, rp.NombreProd FROM cuarentenas cu INNER JOIN registrosproductos rp ON cu.ProdDesinfecCuarentena=rp.RegIcaProd WHERE cu.IdCuarentena='$_GET[id]'
+                                    ORDER BY cu.IdCuarentena ASC") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
 }
@@ -34,12 +32,12 @@ if (isset($_GET['tgl_awal'])) {
 <html xmlns="http://www.w3.org/1999/xhtml"> 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>REPORTE DE MEDICAMENTOS</title>
+        <title>REPORTE DE CUARENTENA</title>
         <link rel="stylesheet" type="text/css" href="../../assets/css/laporan.css" />
     </head>
     <body>
         <div id="title">
-           DATOS DE REGISTROS DE MEDICAMENTOS
+           DATOS DE REGISTROS DE CUARENTENA
         </div>
     <?php  
     if ($tgl_awal==$tgl_akhir) { ?>
@@ -60,14 +58,16 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
-                        <th height="20" align="center" valign="middle"><small>NO.</small></th>
-                        <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
-                        <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
-                        <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
-                        <th height="20" align="center" valign="middle"><small>TIPO </small></th>
-						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
-                        <th height="20" align="center" valign="middle"><small>UNIDAD</small></th>
+                        <th height="20" align="center" valign="middle"><small>IdCuarentena</small></th>
+                        <th height="20" align="center" valign="middle"><small>AnimCuarentena</small></th>
+                        <th height="20" align="center" valign="middle"><small>FechIngresoCuarentena</small></th>
+                        <th height="20" align="center" valign="middle"><small>FechSalidaCuarentena </small></th>
+                        <th height="20" align="center" valign="middle"><small>NumAnimalCuarentena</small></th>
+                        <th height="20" align="center" valign="middle"><small>MotivoIngresoCuarentena </small></th>
+						<th height="20" align="center" valign="middle"><small>DiagPresuntCuarentena </small></th>
+                        <th height="20" align="center" valign="middle"><small>DesinfCuarentena</small></th>
+                        <th height="20" align="center" valign="middle"><small>ProdDesinfecCuarentena </small></th>
+						<th height="20" align="center" valign="middle"><small>EncargadoCuarenten </small></th>
                     </tr>
                 </thead>
                 <tbody>

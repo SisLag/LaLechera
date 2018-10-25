@@ -60,14 +60,15 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
-                        <th height="20" align="center" valign="middle"><small>NO.</small></th>
-                        <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
-                        <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
-                        <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
-                        <th height="20" align="center" valign="middle"><small>TIPO </small></th>
-						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
-                        <th height="20" align="center" valign="middle"><small>UNIDAD</small></th>
+                        <th height="20" align="center" valign="middle"><small>IdProdVaca</small></th>
+                        <th height="20" align="center" valign="middle"><small>VacaProd</small></th>
+                        <th height="20" align="center" valign="middle"><small>FechProdVaca</small></th>
+                        <th height="20" align="center" valign="middle"><small>LtsAmProdVaca</small></th>
+                        <th height="20" align="center" valign="middle"><small>LtspmProdVaca</small></th>
+                        <th height="20" align="center" valign="middle"><small>TotalLtsProdVaca</small></th>
+						<th height="20" align="center" valign="middle"><small>ConcentrProdVaca</small></th>
+                        <th height="20" align="center" valign="middle"><small>CondiccCorpVacaProdVaca</small></th>
+                        <th height="20" align="center" valign="middle"><small>ObservProdVaca</small></th>
                     </tr>
                 </thead>
                 <tbody>
