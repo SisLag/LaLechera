@@ -23,10 +23,10 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad
-                                    FROM transaccion_medicamentos as a INNER JOIN medicamentos as b ON a.codigo=b.codigo
-                                    WHERE a.fecha BETWEEN '$tgl_awal' AND '$tgl_akhir'
-                                    ORDER BY a.codigo_transaccion ASC") 
+    $query = mysqli_query($mysqli,  "SELECT df.NombreFinca,df.MunicipioFinca,df.VeredaFinca,df.BarrioFinca,df.NombrePropietFinca,df.TelFinca1,df.NombreAdminFinca,
+    df.TelFinca12,df.AreaTotalFinca,df.AreaPastosFinca,df.AreaLecheriaFinca,df.AreaLevanteFinca,m.NombreMunicipio,m.IdMunicipio,v.NombreVereda,v.IdVereda,b.NombreBarrio,b.IdBarrio FROM datosfincas df INNER JOIN municipios m ON df.MunicipioFinca=m.IdMunicipio
+                                       INNER JOIN veredas v ON df.VeredaFinca=v.IdVereda
+                                       INNER JOIN barrios b ON df.BarrioFinca=b.IdBarrio") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
 }

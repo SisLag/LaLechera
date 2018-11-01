@@ -23,10 +23,8 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad
-                                    FROM transaccion_medicamentos as a INNER JOIN medicamentos as b ON a.codigo=b.codigo
-                                    WHERE a.fecha BETWEEN '$tgl_awal' AND '$tgl_akhir'
-                                    ORDER BY a.codigo_transaccion ASC") 
+    $query = mysqli_query($mysqli, "SELECT rp.IdPalpacion,rp.DiasLechePalpacion,rp.FechUltimServicPalpacion,rp.DiasServidaPalpacion,rp.FechUltimPalpacion,rp.HallazgosPalpacion,rp.EstadoPalpacion,rp.EstrucOvaricasPalpacion,rp.CCRechequeoPalpacion,rp.ObservPalpacion FROM registrospalpaciones rp LEFT JOIN perfiles p ON en.PerfilEncargado=p.IdPerfil WHERE rp.IdPalpacion='$_GET[id]'
+                                    ORDER BY rp.IdPalpacion ASC") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
 }
