@@ -23,7 +23,9 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT en.NumeroDocumento,en.NombreEncargado,en.Apellido1Encargado,en.Apellido2Encargado,en.Correo,en.NumeroContacto,en.Foto,en.ClaveEncargado,en.PerfilEncargado,p.NombrePerfil FROM encargados en INNER JOIN perfiles p ON en.PerfilEncargado=p.IdPerfil WHERE en.NumeroDocumento='$_GET[id]'
+    $query = mysqli_query($mysqli, "SELECT en.NumeroDocumento,en.NombreEncargado,en.Apellido1Encargado,en.Apellido2Encargado,en.Correo,en.NumeroContacto,en.Foto,en.ClaveEncargado,en.PerfilEncargado,en.created_date,p.NombrePerfil FROM encargados en 
+                                    INNER JOIN perfiles p ON en.PerfilEncargado=p.IdPerfil 
+                                    WHERE en.created_date BETWEEN '$tgl_awal' AND '$tgl_akhir'
                                     ORDER BY en.NumeroDocumento ASC") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
@@ -58,8 +60,8 @@ if (isset($_GET['tgl_awal'])) {
             <table width="100%" border="0.3" cellpadding="0" cellspacing="0">
                 <thead style="background:#e8ecee">
                     <tr class="tr-title">
+                    <th height="20" align="center" valign="middle"><small>Nro</small></th>
                         <th height="20" align="center" valign="middle"><small>NumeroDocumento</small></th>
-                        <th height="20" align="center" valign="middle"><small>TipoDocumento No </small></th>
                         <th height="20" align="center" valign="middle"><small>NombreEncargado</small></th>
                         <th height="20" align="center" valign="middle"><small>Apellido1Encargado </small></th>
                         <th height="20" align="center" valign="middle"><small>Apellido2Encargado</small></th>
@@ -67,41 +69,28 @@ if (isset($_GET['tgl_awal'])) {
 						<th height="20" align="center" valign="middle"><small>NumeroContacto</small></th>
                         <th height="20" align="center" valign="middle"><small>ClaveEncargado</small></th>
                         <th height="20" align="center" valign="middle"><small>PerfilEncargado</small></th>
-                        <th height="20" UsuarioEncargado="center" valign="UsuarioEncargado"><small>FoUsuarioEncargadoto</small></th>
                     </tr>
                 </thead>
                 <tbody>
 <?php
     
-    if($count == 0) {
-        echo "  <tr>
-                    <td width='40' height='13' align='center' valign='middle'></td>
-                    <td width='120' height='13' align='center' valign='middle'></td>
-                    <td width='80' height='13' align='center' valign='middle'></td>
-                    <td width='80' height='13' align='center' valign='middle'></td>
-                    <td style='padding-left:5px;' width='155' height='13' valign='middle'></td>
-					<td style='padding-left:5px;' width='50' height='13' valign='middle'></td>
-                    <td style='padding-right:10px;' width='50' height='13' align='right' valign='middle'></td>
-                    <td width='80' height='13' align='center' valign='middle'></td>
-                </tr>";
-    }
-
-    else {
+    if($count != 0){
    
         while ($data = mysqli_fetch_assoc($query)) {
-            $tanggal       = $data['fecha'];
+            $tanggal       = $data['created_date'];
             $exp           = explode('-',$tanggal);
             $fecha = $exp[2]."-".$exp[1]."-".$exp[0];
 
             echo "  <tr>
-                        <td width='40' height='13' align='center' valign='middle'>$no</td>
-                        <td width='120' height='13' align='center' valign='middle'>$data[codigo_transaccion]</td>
-                        <td width='80' height='13' align='center' valign='middle'>$fecha</td>
-                        <td width='80' height='13' align='center' valign='middle'>$data[codigo]</td>
-                        <td style='padding-left:5px;' width='155' height='13' valign='middle'>$data[nombre]</td>
-						<td style='padding-left:5px;' width='50' height='13' valign='middle'>$data[tipo_transaccion]</td>
-                        <td style='padding-right:10px;' width='50' height='13' align='center' valign='middle'>$data[numero]</td>
-                        <td width='80' height='13' align='center' valign='middle'>$data[unidad]</td>
+            <td width='40' height='10' align='center' valign='middle'>$no</td>
+            <td width='87' height='10' align='center' valign='middle'>$data[NumeroDocumento]</td>
+            <td width='87' height='10' align='center' valign='middle'>$data[NombreEncargado]</td>
+            <td width='87' height='10' align='center' valign='middle'>$data[Apellido1Encargado]</td>
+            <td style='padding-right:10px;' width='87' height='13' align='center' valign='middle'>$data[Apellido2Encargado]</td>
+            <td width='87' height='10' align='center' valign='middle'>$data[Correo]</td>
+            <td width='87' height='10' align='center' valign='middle'>$data[NumeroContacto]</td> 
+            <td style='padding-left:5px;' width='223' height='13' valign='middle'>$data[ClaveEncargado]</td>
+            <td style='padding-left:5px;' width='223' height='13' valign='middle'>$data[PerfilEncargado]</td>             
                     </tr>";
             $no++;
         }
@@ -121,7 +110,7 @@ $content = '<page style="font-family: freeserif">'.($content).'</page>';
 require_once('../../assets/plugins/html2pdf_v4.03/html2pdf.class.php');
 try
 {
-    $html2pdf = new HTML2PDF('P','F4','en', false, 'ISO-8859-15',array(10, 10, 10, 10));
+    $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(15, 15, 15, 15));
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output($filename);

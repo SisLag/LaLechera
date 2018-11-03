@@ -23,8 +23,9 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli,"SELECT ra.ChapetaAnimal,ra.NombreAnimal,ra.MadreAnimal,ra.PadreAnimal,ra.ServicioAnimal,ra.ObservAnimal,rm.NombreVacaMadre,rm.IdVacaMadre, rp.NombreToroPadre,rp.IdToroPadre FROM registrosanimeles ra LEFT JOIN registrosanimmadres rm ON ra.MadreAnimal=rm.IdVacaMadre
-    LEFT JOIN registrosanimpadres rp ON ra.PadreAnimal=rp.IdToroPadre") 
+    $query = mysqli_query($mysqli,"SELECT ra.ChapetaAnimal,ra.NombreAnimal,ra.MadreAnimal,ra.PadreAnimal,ra.ServicioAnimal,ra.ObservAnimal,rm.NombreVacaMadre,rm.IdVacaMadre, rp.NombreToroPadre,rp.IdToroPadre FROM registrosanimeles ra 
+                                    INNER JOIN registrosanimmadres rm ON ra.MadreAnimal=rm.IdVacaMadre
+                                    INNER JOIN registrosanimpadres rp ON ra.PadreAnimal=rp.IdToroPadre") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
 }
@@ -120,7 +121,7 @@ $content = '<page style="font-family: freeserif">'.($content).'</page>';
 require_once('../../assets/plugins/html2pdf_v4.03/html2pdf.class.php');
 try
 {
-    $html2pdf = new HTML2PDF('P','F4','en', false, 'ISO-8859-15',array(10, 10, 10, 10));
+    $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(15, 15, 15, 15));
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output($filename);

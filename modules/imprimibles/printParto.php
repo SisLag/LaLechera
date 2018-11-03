@@ -12,21 +12,22 @@ include "../../config/fungsi_rupiah.php";
 $hari_ini = date("d-m-Y");
 
 
-$tgl1     = $_GET['tgl_awal'];
-$explode  = explode('-',$tgl1);
-$tgl_awal = $explode[2]."-".$explode[1]."-".$explode[0];
+$tgl1 = $_GET['tgl_awal'];
+$explode = explode('-', $tgl1);
+$tgl_awal = $explode[2] . "-" . $explode[1] . "-" . $explode[0];
 
-$tgl2      = $_GET['tgl_akhir'];
-$explode   = explode('-',$tgl2);
-$tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
+$tgl2 = $_GET['tgl_akhir'];
+$explode = explode('-', $tgl2);
+$tgl_akhir = $explode[2] . "-" . $explode[1] . "-" . $explode[0];
 
 if (isset($_GET['tgl_awal'])) {
-    $no    = 1;
-    
-    $query = mysqli_query($mysqli, "SELECT pa.IdParto,pa.AbortoParto,pa.NombreCriaParto,pa.SexoCriaParto,pa.ObservParto, sx.NombreSexo FROM partos pa LEFT JOIN sexos sx ON pa.SexoCriaParto=sx.IdSexo WHERE pa.IdParto='$_GET[id]'
-                                    ORDER BY pa.IdParto ASC") 
-                                    or die('error '.mysqli_error($mysqli));
-    $count  = mysqli_num_rows($query);
+    $no = 1;
+
+    $query = mysqli_query($mysqli, "SELECT pa.IdParto,pa.AbortoParto,pa.NombreCriaParto,pa.SexoCriaParto,pa.ObservParto, sx.NombreSexo FROM partos pa 
+    INNER JOIN sexos sx ON pa.SexoCriaParto=sx.IdSexo 
+    WHERE pa.IdParto='$_GET[id]' ORDER BY pa.IdParto ASC")
+        or die('error ' . mysqli_error($mysqli));
+    $count = mysqli_num_rows($query);
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml"> 
@@ -39,19 +40,21 @@ if (isset($_GET['tgl_awal'])) {
         <div id="title">
            DATOS DE REGISTROS DE MEDICAMENTOS
         </div>
-    <?php  
-    if ($tgl_awal==$tgl_akhir) { ?>
+    <?php 
+    if ($tgl_awal == $tgl_akhir) { ?>
         <div id="title-tanggal">
             Fecha <?php echo tgl_eng_to_ind($tgl1); ?>
         </div>
     <?php
-    } else { ?>
+
+} else { ?>
         <div id="title-tanggal">
             Desde <?php echo tgl_eng_to_ind($tgl1); ?> Hasta <?php echo tgl_eng_to_ind($tgl2); ?>
         </div>
     <?php
-    }
-    ?>
+
+}
+?>
         
         <hr><br>
         <div id="isi">
@@ -70,9 +73,9 @@ if (isset($_GET['tgl_awal'])) {
                 </thead>
                 <tbody>
 <?php
-    
-    if($count == 0) {
-        echo "  <tr>
+
+if ($count == 0) {
+    echo "  <tr>
                     <td width='40' height='13' align='center' valign='middle'></td>
                     <td width='120' height='13' align='center' valign='middle'></td>
                     <td width='80' height='13' align='center' valign='middle'></td>
@@ -82,16 +85,14 @@ if (isset($_GET['tgl_awal'])) {
                     <td style='padding-right:10px;' width='50' height='13' align='right' valign='middle'></td>
                     <td width='80' height='13' align='center' valign='middle'></td>
                 </tr>";
-    }
+} else {
 
-    else {
-   
-        while ($data = mysqli_fetch_assoc($query)) {
-            $tanggal       = $data['fecha'];
-            $exp           = explode('-',$tanggal);
-            $fecha = $exp[2]."-".$exp[1]."-".$exp[0];
+    while ($data = mysqli_fetch_assoc($query)) {
+        $tanggal = $data['fecha'];
+        $exp = explode('-', $tanggal);
+        $fecha = $exp[2] . "-" . $exp[1] . "-" . $exp[0];
 
-            echo "  <tr>
+        echo "  <tr>
                         <td width='40' height='13' align='center' valign='middle'>$no</td>
                         <td width='120' height='13' align='center' valign='middle'>$data[codigo_transaccion]</td>
                         <td width='80' height='13' align='center' valign='middle'>$fecha</td>
@@ -101,9 +102,9 @@ if (isset($_GET['tgl_awal'])) {
                         <td style='padding-right:10px;' width='50' height='13' align='center' valign='middle'>$data[numero]</td>
                         <td width='80' height='13' align='center' valign='middle'>$data[unidad]</td>
                     </tr>";
-            $no++;
-        }
+        $no++;
     }
+}
 ?>	
                 </tbody>
             </table>
@@ -112,17 +113,17 @@ if (isset($_GET['tgl_awal'])) {
     </body>
 </html>
 <?php
-$filename="datos de registro de medicamentos.pdf"; 
+$filename = "datos de registro de medicamentos.pdf";
 $content = ob_get_clean();
-$content = '<page style="font-family: freeserif">'.($content).'</page>';
+$content = '<page style="font-family: freeserif">' . ($content) . '</page>';
 
 require_once('../../assets/plugins/html2pdf_v4.03/html2pdf.class.php');
-try
-{
-    $html2pdf = new HTML2PDF('P','F4','en', false, 'ISO-8859-15',array(10, 10, 10, 10));
+try {
+    $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(15, 15, 15, 15));
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output($filename);
+} catch (HTML2PDF_exception $e) {
+    echo $e;
 }
-catch(HTML2PDF_exception $e) { echo $e; }
 ?>

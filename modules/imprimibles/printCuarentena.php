@@ -22,7 +22,9 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT cu.IdCuarentena,cu.AnimCuarentena,cu.FechIngresoCuarentena,cu.FechSalidaCuarentena,cu.MotivoIngresoCuarentena,cu.DiagPresuntCuarentena,cu.DesinfCuarentena,cu.ProdDesinfecCuarentena, rp.NombreProd FROM cuarentenas cu INNER JOIN registrosproductos rp ON cu.ProdDesinfecCuarentena=rp.RegIcaProd WHERE cu.FechIngresoCuarentena BETWEEN '$tgl_awal' AND '$tgl_akhir'
+    $query = mysqli_query($mysqli, "SELECT cu.IdCuarentena,cu.AnimCuarentena,cu.FechIngresoCuarentena,cu.FechSalidaCuarentena,cu.MotivoIngresoCuarentena,cu.DiagPresuntCuarentena,cu.DesinfCuarentena,cu.ProdDesinfecCuarentena, rp.NombreProd FROM cuarentenas cu
+                                     INNER JOIN registrosproductos rp ON cu.ProdDesinfecCuarentena=rp.RegIcaProd
+                                      WHERE cu.FechIngresoCuarentena BETWEEN '$tgl_awal' AND '$tgl_akhir'
                                     ORDER BY cu.IdCuarentena ASC") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);

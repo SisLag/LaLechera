@@ -24,9 +24,10 @@ if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
     $query = mysqli_query($mysqli,  "SELECT df.NombreFinca,df.MunicipioFinca,df.VeredaFinca,df.BarrioFinca,df.NombrePropietFinca,df.TelFinca1,df.NombreAdminFinca,
-    df.TelFinca12,df.AreaTotalFinca,df.AreaPastosFinca,df.AreaLecheriaFinca,df.AreaLevanteFinca,m.NombreMunicipio,m.IdMunicipio,v.NombreVereda,v.IdVereda,b.NombreBarrio,b.IdBarrio FROM datosfincas df INNER JOIN municipios m ON df.MunicipioFinca=m.IdMunicipio
-                                       INNER JOIN veredas v ON df.VeredaFinca=v.IdVereda
-                                       INNER JOIN barrios b ON df.BarrioFinca=b.IdBarrio") 
+    df.TelFinca12,df.AreaTotalFinca,df.AreaPastosFinca,df.AreaLecheriaFinca,df.AreaLevanteFinca,m.NombreMunicipio,m.IdMunicipio,v.NombreVereda,v.IdVereda,b.NombreBarrio,b.IdBarrio FROM datosfincas df 
+                                      INNER JOIN municipios m ON df.MunicipioFinca=m.IdMunicipio
+                                      INNER JOIN veredas v ON df.VeredaFinca=v.IdVereda
+                                      INNER JOIN barrios b ON df.BarrioFinca=b.IdBarrio") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
 }
@@ -125,7 +126,7 @@ $content = '<page style="font-family: freeserif">'.($content).'</page>';
 require_once('../../assets/plugins/html2pdf_v4.03/html2pdf.class.php');
 try
 {
-    $html2pdf = new HTML2PDF('P','F4','en', false, 'ISO-8859-15',array(10, 10, 10, 10));
+    $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(15, 15, 15, 15));
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output($filename);

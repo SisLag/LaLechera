@@ -23,8 +23,8 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad
-                                    FROM transaccion_medicamentos as a INNER JOIN medicamentos as b ON a.codigo=b.codigo
+    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad FROM transaccion_medicamentos as a 
+                                    INNER JOIN medicamentos as b ON a.codigo=b.codigo
                                     WHERE a.fecha BETWEEN '$tgl_awal' AND '$tgl_akhir'
                                     ORDER BY a.codigo_transaccion ASC") 
                                     or die('error '.mysqli_error($mysqli));
@@ -63,7 +63,7 @@ if (isset($_GET['tgl_awal'])) {
                         <th height="20" align="center" valign="middle"><small>NO.</small></th>
                         <th height="20" align="center" valign="middle"><small>TRANSACCION No </small></th>
                         <th height="20" align="center" valign="middle"><small>FECHA</small></th>
-                        <th height="20" align="center" valign="middle"><small>CÓDIGO </small></th>
+                        <th height="20" align="center" valign="middle"><small>Cï¿½DIGO </small></th>
                         <th height="20" align="center" valign="middle"><small>NOMBRE DE MEDICAMENTO</small></th>
                         <th height="20" align="center" valign="middle"><small>TIPO </small></th>
 						<th height="20" align="center" valign="middle"><small>CANT. </small></th>
@@ -121,7 +121,7 @@ $content = '<page style="font-family: freeserif">'.($content).'</page>';
 require_once('../../assets/plugins/html2pdf_v4.03/html2pdf.class.php');
 try
 {
-    $html2pdf = new HTML2PDF('P','F4','en', false, 'ISO-8859-15',array(10, 10, 10, 10));
+    $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(15, 15, 15, 15));
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output($filename);

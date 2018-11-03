@@ -23,8 +23,8 @@ $tgl_akhir = $explode[2]."-".$explode[1]."-".$explode[0];
 if (isset($_GET['tgl_awal'])) {
     $no    = 1;
     
-    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_inv,a.fecha,a.codigo,a.numero,b.IdRegIcaMedicamento,b.NombreMedicamento,b.UnidadMedicamento
-    FROM inventario_medicamentos as a INNER JOIN registrosmedicamentos as b ON a.codigo=b.IdRegIcaMedicamento ORDER BY codigo_inv DESC") 
+    $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_inv,a.fecha,a.codigo,a.numero,b.IdRegIcaMedicamento,b.NombreMedicamento,b.UnidadMedicamento FROM inventario_medicamentos as a 
+                                    INNER JOIN registrosmedicamentos as b ON a.codigo=b.IdRegIcaMedicamento ORDER BY codigo_inv DESC") 
                                     or die('error '.mysqli_error($mysqli));
     $count  = mysqli_num_rows($query);
 }
@@ -117,7 +117,7 @@ $content = '<page style="font-family: freeserif">'.($content).'</page>';
 require_once('../../assets/plugins/html2pdf_v4.03/html2pdf.class.php');
 try
 {
-    $html2pdf = new HTML2PDF('P','F4','en', false, 'ISO-8859-15',array(10, 10, 10, 10));
+    $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(15, 15, 15, 15));
     $html2pdf->setDefaultFont('Arial');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output($filename);
